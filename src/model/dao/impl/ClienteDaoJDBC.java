@@ -84,9 +84,9 @@ public class ClienteDaoJDBC implements ClienteDAO {
 			st = con.prepareStatement(
 					"select cliente.*, contato.*, endereco.* from cliente "
 					+ "inner join cliente_contato as cli_cont "
-					+ "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.id = contato.id "
+					+ "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.idContato = contato.id "
 					+ "inner join cliente_endereco as cli_end "
-					+ "inner join endereco on cli_end.idCliente = cliente.id and cli_end.id = endereco.id "
+					+ "inner join endereco on cli_end.idCliente = cliente.id and cli_end.idEndereco = endereco.id "
 					+ "WHERE cliente.id = ?");
 			st.setInt(1, id);
 			rs = st.executeQuery();
@@ -114,9 +114,9 @@ public class ClienteDaoJDBC implements ClienteDAO {
 		try {
 			st = con.prepareStatement("SELECT cliente.*, contato.*, endereco.* FROM cliente "
 					+ "inner join cliente_contato as cli_cont "
-				    + "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.id = contato.id "
+				    + "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.idContato = contato.id "
 				    + "inner join cliente_endereco as cli_end "
-				    + "inner join endereco on cli_end.idCliente = cliente.id and cli_end.id = endereco.id "
+				    + "inner join endereco on cli_end.idCliente = cliente.id and cli_end.idEndereco = endereco.id "
 					+ "WHERE nome like ? "
 					+ "ORDER BY nome");
 			st.setString(1, "%" + nome + "%");
@@ -161,9 +161,9 @@ public class ClienteDaoJDBC implements ClienteDAO {
 			st = con.prepareStatement(
 					"select cliente.*, contato.*, endereco.* from cliente "
 					+ "inner join cliente_contato as cli_cont "
-				    + "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.id = contato.id "
+				    + "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.idContato = contato.id "
 				    + "inner join cliente_endereco as cli_end "
-				    + "inner join endereco on cli_end.idCliente = cliente.id and cli_end.id = endereco.id "
+				    + "inner join endereco on cli_end.idCliente = cliente.id and cli_end.idEndereco = endereco.id "
 				    + "order by nome");
 			
 			rs = st.executeQuery();

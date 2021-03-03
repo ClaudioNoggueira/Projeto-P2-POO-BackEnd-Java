@@ -107,9 +107,9 @@ public class PedidoDaoJDBC implements PedidoDAO {
 		try {
 			st = con.prepareStatement("select pedido.*, cliente.*, contato.*, endereco.* from pedido "
 					+ "inner join cliente on cliente.id = pedido.idCliente " + "inner join cliente_contato as cli_cont "
-					+ "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.id = contato.id "
+					+ "inner join contato on cli_cont.idCliente = cliente.id and cli_cont.idContato = contato.id "
 					+ "inner join cliente_endereco as cli_end "
-					+ "inner join endereco on cli_end.idCliente = cliente.id and cli_end.id = endereco.id "
+					+ "inner join endereco on cli_end.idCliente = cliente.id and cli_end.idEndereco = endereco.id "
 					+ "where dataPedido between ? and now() " + "order by dataPedido");
 			st.setDate(1, new java.sql.Date(data.getTime()));
 			rs = st.executeQuery();
